@@ -44,8 +44,7 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 </style>
   <section class="content">
   <header class="content__title">
-  		<h1 class="float-left">Orders</h1>
-  	
+  		<h1 class="float-left">Users</h1>
   	</header>
   	 	<div class="card">
   		<div class="card-body">
@@ -53,10 +52,10 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 		<table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>Order Id</th>
-                <th>Order By</th>
-                <th>Product Name</th>
-                <th>Total price</th>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th>User Phone</th>
+                <th>Created Date</th>
                 <th>Action</th>
                
             </tr>
@@ -65,19 +64,23 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
           
    <?php
 		$db= new functions();
-		$res = $db->fechord();
+		$res = $db->fechusers();
     while($row = mysqli_fetch_assoc($res))
 	{
-	$uid = $row['user_id'];
-	$orid = $row['id'];
+	$ustatus = $row['status'];
 		?>
             <tr>
-                <td><?php echo $row['id']; ?></td>
-				 <td><?php  $resk = $db->fechusersid($uid);  $rowk = mysqli_fetch_assoc($resk)?><?php echo $rowk['name']; ?></td>
-                <td><?php echo $row['pname']; ?></td>
-                <td>$ <?php echo $row['proprice']; ?></td>
+                <td><?php echo $row['name']; ?></td>
+                <td><?php echo $row['email']; ?></td>
+                <td><?php echo $row['phone']; ?></td>
+                <td><?php echo $row['date']; ?></td>
                 <td>
-				<a href="https://kavity.co/admin/order_details.php?id=<?php echo $orid; ?>"><button class="btn btn-warning btn--icon btn-status" data-id="453" data-status="1"><i class="zmdi zmdi-eye"></i></button></a>
+				<?php if($ustatus == '1') { ?>
+				<a href="javascript:void();" onclick="empinact(<?php echo $row['id'];?>);"><button class="btn btn-warning  btn-status"  data-id="453" data-status="1">InActive</button></a>
+				<?php } else {  ?>
+				<a href="javascript:void();" onclick="empact(<?php echo $row['id'];?>);"><button class="btn btn-success  btn-status"  data-id="453" data-status="1">Active</button></a>
+				<?php } ?>
+				<button class="btn btn-danger btn--icon btn-status" onclick="deleteur(<?php echo $row['id']; ?>)" data-id="453" data-status="1"><i class="zmdi zmdi-delete"></i></button>
 			
 					
 				</td>

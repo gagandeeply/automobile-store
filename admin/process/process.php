@@ -48,7 +48,63 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'create_cat')
 	  echo '1';
 	 }
 }
-else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'removecat'){	$cid= $_REQUEST['id'];		$gh1 = "DELETE FROM `category` WHERE `id`='$cid'";    $result1 =  mysqli_query($conn1,$gh1);		 if($result1)	 {		 echo '1';	 }	 else	 {		 	  echo '0';	 }}else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'removepr'){	$cid= $_REQUEST['id'];		$gh1 = "DELETE FROM `product` WHERE `id`='$cid'";    $result1 =  mysqli_query($conn1,$gh1);		 if($result1)	 {		 echo '1';	 }	 else	 {		 	  echo '0';	 }}else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'cemployee')
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'removecat')
+{	
+$cid= $_REQUEST['id'];	
+	$gh1 = "DELETE FROM `category` WHERE `id`='$cid'";  
+	$result1 =  mysqli_query($conn1,$gh1);	
+	if($result1)	
+		{	
+	echo '1';	
+	}	
+	else
+		{	
+	echo '0';	
+	}
+	}
+	else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'removeuser')
+{	
+$cid= $_REQUEST['id'];	
+	$gh1 = "DELETE FROM `users` WHERE `id`='$cid'";  
+	$result1 =  mysqli_query($conn1,$gh1);	
+	if($result1)	
+		{	
+	echo '1';	
+	}	
+	else
+		{	
+	echo '0';	
+	}
+	}
+	
+	else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'inactemp')
+{
+	
+	
+		$emp_id= $_REQUEST['id'];
+
+$gh2 = "UPDATE `users` SET status = '0' WHERE id='$emp_id'";
+   
+ $result2 =  mysqli_query($conn1,$gh2);
+	
+
+echo '1';
+}
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'actemp')
+{
+	
+	
+		$emp_id= $_REQUEST['id'];
+ 
+$gh2 = "UPDATE `users` SET status = '1' WHERE id='$emp_id'";
+   
+ $result2 =  mysqli_query($conn1,$gh2);
+	
+
+echo '1';
+}
+	
+	else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'removepr'){	$cid= $_REQUEST['id'];		$gh1 = "DELETE FROM `product` WHERE `id`='$cid'";    $result1 =  mysqli_query($conn1,$gh1);		 if($result1)	 {		 echo '1';	 }	 else	 {		 	  echo '0';	 }}else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'cemployee')
 {
 	
 	include('src/autoload.php');

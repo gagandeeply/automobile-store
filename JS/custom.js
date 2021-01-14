@@ -60,134 +60,7 @@ function login()
 
 }
 
-function createcat()
 
-{
-
-    var cname= $("#cname").val();
-
-
-
-	 
-
-	 if(cname != '')
-
-	{
-
-      var UrlToPass = 'action=create_cat&cname='+cname;
-
-	$.ajax({ 
-
-			type : 'POST', 
-
-			data : UrlToPass, 
-
-			url  : 'process/process.php',
-
-			 success: function (status) {
-
-				 var status=$.trim(status); 
-
-			if(status=='1')
-
-			{
-
-				alert('Category created Successfully');
-
-				document.location.href = "https://kavity.co/admin/categories.php"
-
-			}
-
-			else if(status=='2')
-
-			{
-
-				$("#error").html('Category Already in Use!');
-
-			}
-
-			else
-
-			{
-
-				$("#error").html('Something Went Wrong Please try Again!');
-
-			}
-
-				
-
-            }
-
-        });
-
-	}
-
-	else
-
-	{
-
-		$("#error").html('All Field Required !')
-
-	}
-
-	
-
-}
-
-function deletecat(cid)
-{
-	
-	if (confirm('Are you sure you want to delete this ?')) {
-	
-		
-      $.ajax({
-            type: "POST",
-            url  : 'process/process.php?action=removecat&id='+cid,
-         	success: function(status){ 
-
-		 var status=$.trim(status); 
-			if(status=='1')
-			{
-			
-				alert('Category Deleted Successfully');
-                 location.reload();
-				}
-else
-{
-	alert('Some Error');
-}	
-				}
-            });
-       
-	} 
-}
-function deletepr(cid)
-{
-	
-	if (confirm('Are you sure you want to delete this ?')) {
-	
-		
-      $.ajax({
-            type: "POST",
-            url  : 'process/process.php?action=removepr&id='+cid,
-         	success: function(status){ 
-
-		 var status=$.trim(status); 
-			if(status=='1')
-			{
-			
-				alert('Product Deleted Successfully');
-                 location.reload();
-				}
-else
-{
-	alert('Some Error');
-}	
-				}
-            });
-       
-	} 
-}
 
 
 function registers()
@@ -221,7 +94,7 @@ function registers()
 			else if(status=='1')
 
 			{
-                alert('Register Successfully Welcome');
+               $("#error").html('Register Successfully Welcome');
 				document.location.href = "https://kavity.co"
 
 			}
@@ -251,21 +124,83 @@ function registers()
 	}
 }
 
-function createemployee()
-
+function bdrive(x)
 {
-
-	var org_id = $("#organization_id").val();
-
-	var emp_id = $("#employee_no").val();
-
 	
-
-	if(org_id != '' && emp_id != '')
+	var name = $("#name"+x).val(); 
+	var pnumber = $("#pnumber"+x).val();
+	var address = $("#address"+x).val();
+	var bdate = $("#bdate"+x).val();
+	
+	
+	if(name != '' && pnumber != '' && address != '' && bdate != '')
 
 	{
 
-		     var UrlToPass = 'action=cemployee&org_id='+org_id+'&emp_id='+emp_id;
+      var UrlToPass = 'action=bodrive&name='+name+'&pnumber='+pnumber+'&address='+address+'&id='+x+'&bdate='+bdate;
+
+	$.ajax({ 
+
+			type : 'POST', 
+
+			data : UrlToPass, 
+
+			url  : 'process/process.php',
+
+			 success: function (status) {
+		
+				var status=$.trim(status); 
+			
+           
+			//$("#errorsu"+x).html('Your Booking Submit Successfully!')
+			//    $("#name"+x).val('');
+			//	$("#pnumber"+x).val('');
+			//	$("#address"+x).val('');
+			//	$("#bdate"+x).val('');
+				document.location.href = "https://kavity.co/shop.php"
+
+				
+
+            }
+
+        });
+
+	}
+
+	else
+
+	{
+
+		$("#error"+x).html('All Field Required !')
+
+	}
+}
+function createorder()
+
+{
+	var pid = $("#proid").val();
+	var pname = $(".product_name").text();
+	var proprice = $("#proprice").text();
+	var color = $("#color").val();
+	var tire = $("#tire").val();
+	var interior = $("#interior").val();
+	var firstName = $("#firstName").val();
+	var lastName = $("#lastName").val();
+	var phone = $("#phone").val();
+	var email = $("#email").val();
+	var address = $("#address").val();
+	var address2 = $("#address2").val();
+	var country = $("#country").val();
+	var state = $("#state").val();
+	var zip = $("#zip").val();
+	var quantity_input = $("#quantity_input").val();
+	
+	
+	if(firstName != '' && lastName != '' && phone != '' && email != '' && address != '' && country != '' && state != '' && zip != '')
+
+	{
+ 
+      var UrlToPass = 'action=create_order&pid='+pid+'&pname='+pname+'&proprice='+proprice+'&color='+color+'&tire='+tire+'&interior='+interior+'&firstName='+firstName+'&lastName='+lastName+'&phone='+phone+'&country='+country+'&state='+state+'&zip='+zip+'&quantity_input='+quantity_input+'&email='+email+'&address='+address+'&address2='+address2;
 
 	$.ajax({ 
 
@@ -278,16 +213,11 @@ function createemployee()
 			 success: function (status) {
 
 				 var status=$.trim(status); 
-
-				
-
-			if(status=='1')
+          if(status=='1')
 
 			{
-
-				alert('Employee Created Successfully');
-
-				document.location.href = "https://kavity.co/admin/dashboard"
+                $("#error").html('Your Order Placed Successfully');
+				document.location.href = "https://kavity.co/shop.php"
 
 			}
 
@@ -295,7 +225,7 @@ function createemployee()
 
 			{
 
-				$("#error").html('Invalid credentials !')
+				$("#error").html('Invalid credentials !');
 
 			}
 
@@ -314,47 +244,9 @@ function createemployee()
 		$("#error").html('All Field Required !')
 
 	}
-
 }
 
 
 
-function dowemp(oid)
 
-{
 
-	if(oid !='')
-
-	{
-
-		  var UrlToPass = 'action=dempl&oid='+oid;
-
-	$.ajax({ 
-
-			type : 'POST', 
-
-			data : UrlToPass, 
-
-			url  : 'process/process.php',
-
-			 success: function (status) {
-
-				 window.open('https://kavity.co/admin/organization_details?id='+oid,'_blank' );
-
-			 }
-
-			
-
-        });
-
-	}
-
-	else
-
-	{
-
-		$("#error").html('Something Went Wrong Please try Later !')
-
-	}
-
-}

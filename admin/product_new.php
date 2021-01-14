@@ -1,3 +1,4 @@
+<?php error_reporting(0); ?>
 <?php include('includes/header.php'); ?>
 
 <?php include('includes/sidebar.php'); ?>
@@ -56,7 +57,7 @@ if ($uploadOk == 0) {
      $result2 =  mysqli_query($conn2,$gh2);
 	 if($result2)
 	 {
-	  echo "<script>alert('Product uploaded Successfully')</script>";
+	 // echo "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script><script>$('#errorsu').html('Product uploaded Successfully!');$('#pname').val('');$('#pdescription').val('');$('#pprice').val('');$('#s_category').val('');$('#fileToUpload').val('');</script>";
 	 header('Location: https://kavity.co/admin/products.php');
 	 }
   } else {
@@ -87,7 +88,7 @@ if ($uploadOk == 0) {
   				<div class="card-body">
 
   					<h4 class="card-title">Product Details</h4>
-
+<p id="errorsu" style="color:green;"></p> 
 					<p id="error" style="color:red;"></p> 
 
   					<form method="post" action="#" enctype="multipart/form-data">
@@ -155,7 +156,7 @@ if ($uploadOk == 0) {
 
   						<div class="form-group mt-3">
   							<h3 class="card-body__title">Product Image</h3>
-  							<input type="file" class="form-control" name="fileToUpload" required>
+  							<input type="file" class="form-control" name="fileToUpload" id="fileToUpload" required>
   							<i class="form-group__bar"></i>
   						</div>
   						

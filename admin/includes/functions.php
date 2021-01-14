@@ -37,21 +37,38 @@ global $conn1;
 			return $sqlexicute;
 		}		function fechcatid($cdd)		{			global $conn1;			 $sql="SELECT * FROM `category` where `id`='$cdd'";			$sqlexicute = mysqli_query($conn1,$sql);			return $sqlexicute;		}		
 		function fechpro()		{			global $conn1;			 $sql="SELECT * FROM `product`";			$sqlexicute = mysqli_query($conn1,$sql);			return $sqlexicute;		}
-			function fechorgdetails($orid)
+
+		
+		function fechusers()
 		{
 			global $conn1;
-			 $sql="SELECT * FROM `organization` where `id`='$orid'";
-			$sqlexicute = mysqli_query($conn1,$sql);
-			return $sqlexicute;
-		}
-		function fechemp($oid)
-		{
-			global $conn1;
-			 $sql="SELECT * FROM `employee` WHERE org_id='$oid'";
+			 $sql="SELECT * FROM `users`";
 			$sqlexicute = mysqli_query($conn1,$sql);
 			return $sqlexicute;
 		}
 		
+		function fechusersid($id)
+		{
+			global $conn1;
+			 $sql="SELECT * FROM `users` WHERE `id`='$id'";
+			$sqlexicute = mysqli_query($conn1,$sql);
+			return $sqlexicute;
+		}
+		function fechord()
+		{ 
+			global $conn1;
+			 $sql="SELECT * FROM `order_table`";
+			$sqlexicute = mysqli_query($conn1,$sql);
+			return $sqlexicute;
+		}
+		function fechordid($id)
+		{ 
+			global $conn1;
+			 $sql="SELECT * FROM `order_table` where `id`='$id'";
+			$sqlexicute = mysqli_query($conn1,$sql);
+			return $sqlexicute;
+		}
+		 
 	}
 
 ?>

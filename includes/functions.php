@@ -101,6 +101,32 @@ global $conn1;
 			return $sqlexicute;
 
 		}
+		function fechbook($pid,$uid)
+
+		{
+
+			global $conn1;
+
+			 $sql="SELECT * FROM `test_book` where `p_id` = '$pid' and `user_id`= '$uid'";
+
+			$sqlexicute = mysqli_query($conn1,$sql);
+
+			return $sqlexicute;
+
+		}
+		function fechproid($pid)
+
+		{
+
+			global $conn1;
+
+			 $sql="SELECT * FROM `product` WHERE `id` = '$pid'";
+
+			$sqlexicute = mysqli_query($conn1,$sql);
+
+			return $sqlexicute;
+
+		}
 		function fechprocat($cid)
 
 		{

@@ -45,7 +45,7 @@ function createcat()
 				 var status=$.trim(status); 
 			if(status=='1')
 			{
-				alert('Category created Successfully');
+				$("#error").html('Category created Successfully');
 				document.location.href = "https://kavity.co/admin/categories.php"
 			}
 			else if(status=='2')
@@ -65,58 +65,117 @@ function createcat()
 		$("#error").html('All Field Required !')
 	}
 	
-}function deletecat(cid){		if (confirm('Are you sure you want to delete this ?')) {			      $.ajax({            type: "POST",            url  : 'process/process.php?action=removecat&id='+cid,         	success: function(status){ 		 var status=$.trim(status); 			if(status=='1')			{							alert('Category Deleted Successfully');                 location.reload();				}else{	alert('Some Error');}					}            });       	} }function deletepr(cid){		if (confirm('Are you sure you want to delete this ?')) {			      $.ajax({            type: "POST",            url  : 'process/process.php?action=removepr&id='+cid,         	success: function(status){ 		 var status=$.trim(status); 			if(status=='1')			{							alert('Product Deleted Successfully');                 location.reload();				}else{	alert('Some Error');}					}            });       	} }function registers(){	var fname = $("#fname").val(); 	var email = $("#email").val();	var phone = $("#phone").val();	var passw = $("#passw").val();		alert(fname);	alert(email);	alert(phone);	alert(passw);}
-function createemployee()
+}
+function deleteur(cid)
+{	
+				
+$.ajax({       
+     type: "POST",    
+	 url  : 'process/process.php?action=removeuser&id='+cid,    
+	 success: function(status)
+	 { 		
+	 var status=$.trim(status); 	
+	 if(status=='1')		
+		 {						
+	// alert('User Deleted Successfully');      
+	 location.reload();			
+	 }
+	 else
+	 {	
+ alert('Some Error');
+ }				
+ }        
+ });       
+  
+ }
+	function empinact(eid)
 {
-	var org_id = $("#organization_id").val();
-	var emp_id = $("#employee_no").val();
+			  
+    $.ajax({        
+    type: "POST",       
+	url  : 'process/process.php?action=inactemp&id='+eid,    
+	success: function(status){ 	
 	
-	if(org_id != '' && emp_id != '')
-	{
-		     var UrlToPass = 'action=cemployee&org_id='+org_id+'&emp_id='+emp_id;
-	$.ajax({ 
-			type : 'POST', 
-			data : UrlToPass, 
-			url  : 'process/process.php',
-			 success: function (status) {
-				 var status=$.trim(status); 
-				
-			if(status=='1')
-			{
-				alert('Employee Created Successfully');
-				document.location.href = "https://kavity.co/admin/dashboard"
-			}
-			else
-			{
-				$("#error").html('Invalid credentials !')
-			}
-				
-            }
-        });
+	var status=$.trim(status); 		
+	if(status=='1')		
+		{					
+	//alert('User Inactive Successfully');     
+	location.reload();			
 	}
 	else
-	{
-		$("#error").html('All Field Required !')
-	}
-}
-
-function dowemp(oid)
+	{	
+alert('Some Error');
+}					
+}        
+    });     
+  	 
+	} 
+	 
+	function empact(eid)
 {
-	if(oid !='')
-	{
-		  var UrlToPass = 'action=dempl&oid='+oid;
-	$.ajax({ 
-			type : 'POST', 
-			data : UrlToPass, 
-			url  : 'process/process.php',
-			 success: function (status) {
-				 window.open('https://kavity.co/admin/organization_details?id='+oid,'_blank' );
-			 }
-			
-        });
+				  
+    $.ajax({        
+    type: "POST",       
+	url  : 'process/process.php?action=actemp&id='+eid,    
+	success: function(status){ 	
+	
+	var status=$.trim(status); 		
+	if(status=='1')		
+		{					
+	//alert('User Active Successfully');     
+	location.reload();			
 	}
 	else
-	{
-		$("#error").html('Something Went Wrong Please try Later !')
+	{	
+alert('Some Error');
+}					
+}        
+    });     
+  	
 	}
-}
+function deletecat(cid)
+{	
+				
+$.ajax({       
+     type: "POST",    
+	 url  : 'process/process.php?action=removecat&id='+cid,    
+	 success: function(status)
+	 { 		
+	 var status=$.trim(status); 	
+	 if(status=='1')		
+		 {						
+	 //alert('Category Deleted Successfully');       
+	 location.reload();			
+	 }
+	 else
+	 {	
+ alert('Some Error');
+ }				
+ }        
+ });       
+ 
+ }
+ function deletepr(cid)
+ {		
+		    
+ $.ajax({        
+ type: "POST",     
+ url  : 'process/process.php?action=removepr&id='+cid,  
+ success: function(status)
+ { 	
+ var status=$.trim(status); 
+ if(status=='1')		
+	 {					
+ //alert('Product Deleted Successfully');   
+ location.reload();			
+ }
+ else
+ {	
+alert('Some Error');
+}				
+	}          
+	});      
+ 	
+	}
+
+

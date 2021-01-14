@@ -44,7 +44,7 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 </style>
   <section class="content">
   <header class="content__title">
-  		<h1 class="float-left">Orders</h1>
+  		<h1 class="float-left">Test Drive Bookings</h1>
   	
   	</header>
   	 	<div class="card">
@@ -53,34 +53,36 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 		<table id="example" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>Order Id</th>
-                <th>Order By</th>
+                <th>Booking Id</th>
+                <th>User Name</th>
                 <th>Product Name</th>
-                <th>Total price</th>
-                <th>Action</th>
+                <th>Phone</th>
+                <th>Address</th>
+				<th>Book Date</th>
                
             </tr>
         </thead>
         <tbody>
           
    <?php
+   global $conn1;
 		$db= new functions();
-		$res = $db->fechord();
-    while($row = mysqli_fetch_assoc($res))
+		 $gh = "select * from `test_book`";
+
+    $result =  mysqli_query($conn1,$gh);
+	
+    while($row = mysqli_fetch_assoc($result))
 	{
-	$uid = $row['user_id'];
-	$orid = $row['id'];
+	$pid = $row['p_id'];
 		?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
-				 <td><?php  $resk = $db->fechusersid($uid);  $rowk = mysqli_fetch_assoc($resk)?><?php echo $rowk['name']; ?></td>
-                <td><?php echo $row['pname']; ?></td>
-                <td>$ <?php echo $row['proprice']; ?></td>
-                <td>
-				<a href="https://kavity.co/admin/order_details.php?id=<?php echo $orid; ?>"><button class="btn btn-warning btn--icon btn-status" data-id="453" data-status="1"><i class="zmdi zmdi-eye"></i></button></a>
-			
-					
-				</td>
+				 <td><?php echo $row['name']; ?></td>
+                <td><?php $ghb = "select * from `product` where id = '$pid'";
+                   $resultb =  mysqli_query($conn1,$ghb); $rowb = mysqli_fetch_assoc($resultb); echo $rowb['pname']; ?></td>
+                <td><?php echo $row['phone']; ?></td>
+                <td><?php echo $row['address']; ?></td>
+				<td><?php echo $row['bookdate']; ?></td>
             </tr>
 	<?php } ?>
         </tbody> 

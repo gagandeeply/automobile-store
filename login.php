@@ -14,7 +14,7 @@
                 <input style="width: 400px; height: 30px;" type="password" class="form-control" id="password" name="password"
                     placeholder="Password" required>
             </div>
-            <button type="button" onclick="login();" class="btn btn-primary" style="margin-left: 270px;">Submit</button>
+            <button type="button" onclick="login();" class="btn btn-primary" style="margin-left: 270px;">Login</button>
             <small id="Help" class="form-text text-muted">Don't have an account? Click <a href="register.php">here</a>
                 to register!</small>
         </form>
