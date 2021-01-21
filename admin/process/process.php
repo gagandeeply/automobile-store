@@ -103,6 +103,33 @@ $gh2 = "UPDATE `users` SET status = '1' WHERE id='$emp_id'";
 
 echo '1';
 }
+
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'acc_order')
+{
+	
+	
+		$oid= $_REQUEST['id'];
+ 
+$gh2 = "UPDATE `order_table` SET status = '1' WHERE id='$oid'";
+   
+ $result2 =  mysqli_query($conn1,$gh2);
+	
+
+echo '1';
+}
+else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'rej_order')
+{
+	
+	
+		$oid= $_REQUEST['id'];
+ 
+$gh2 = "DELETE FROM `order_table` WHERE `id`='$oid'";
+   
+ $result2 =  mysqli_query($conn1,$gh2);
+	
+
+echo '1';
+}
 	
 	else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'removepr'){	$cid= $_REQUEST['id'];		$gh1 = "DELETE FROM `product` WHERE `id`='$cid'";    $result1 =  mysqli_query($conn1,$gh1);		 if($result1)	 {		 echo '1';	 }	 else	 {		 	  echo '0';	 }}else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'cemployee')
 {

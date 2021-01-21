@@ -177,5 +177,51 @@ alert('Some Error');
 	});      
  	
 	}
+	
+	function accept_order(oid)
+ {		
+		    
+ $.ajax({        
+ type: "POST",     
+ url  : 'process/process.php?action=acc_order&id='+oid,  
+ success: function(status)
+ { 	
+ var status=$.trim(status); 
+ if(status=='1')		
+	 {					
+ //alert('Product Deleted Successfully');   
+ location.reload();			
+ }
+ else
+ {	
+alert('Some Error');
+}				
+	}          
+	});      
+ 	
+	}
+	function reject_order(oid)
+ {		
+		    
+ $.ajax({        
+ type: "POST",     
+ url  : 'process/process.php?action=rej_order&id='+oid,  
+ success: function(status)
+ { 	
+ var status=$.trim(status); 
+ if(status=='1')		
+	 {					
+ //alert('Product Deleted Successfully');   
+ location.reload();			
+ }
+ else
+ {	
+alert('Some Error');
+}				
+	}          
+	});      
+ 	
+	}
+	
 
 

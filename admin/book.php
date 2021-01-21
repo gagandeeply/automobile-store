@@ -59,6 +59,7 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
                 <th>Phone</th>
                 <th>Address</th>
 				<th>Book Date</th>
+				<th>Status</th>
                
             </tr>
         </thead>
@@ -74,6 +75,7 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
     while($row = mysqli_fetch_assoc($result))
 	{
 	$pid = $row['p_id'];
+	$status = $row['status'];
 		?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
@@ -83,6 +85,8 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
                 <td><?php echo $row['phone']; ?></td>
                 <td><?php echo $row['address']; ?></td>
 				<td><?php echo $row['bookdate']; ?></td>
+				
+				<td><?php if($status == '1') { ?> Rejected <?php } else {  ?> Accepted<?php } ?></td>
             </tr>
 	<?php } ?>
         </tbody> 

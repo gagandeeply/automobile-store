@@ -178,6 +178,8 @@ function bdrive(x)
 function createorder()
 
 {
+	var payoption = $('input[name=payoption]:checked').val();
+
 	var pid = $("#proid").val();
 	var pname = $(".product_name").text();
 	var proprice = $("#proprice").text();
@@ -194,13 +196,14 @@ function createorder()
 	var state = $("#state").val();
 	var zip = $("#zip").val();
 	var quantity_input = $("#quantity_input").val();
-	
+	var downp = $("#downp").val();
+	var downmonth = $("#downmonth").val();
 	
 	if(firstName != '' && lastName != '' && phone != '' && email != '' && address != '' && country != '' && state != '' && zip != '')
 
 	{
  
-      var UrlToPass = 'action=create_order&pid='+pid+'&pname='+pname+'&proprice='+proprice+'&color='+color+'&tire='+tire+'&interior='+interior+'&firstName='+firstName+'&lastName='+lastName+'&phone='+phone+'&country='+country+'&state='+state+'&zip='+zip+'&quantity_input='+quantity_input+'&email='+email+'&address='+address+'&address2='+address2;
+      var UrlToPass = 'action=create_order&pid='+pid+'&pname='+pname+'&payoption='+payoption+'&proprice='+proprice+'&color='+color+'&tire='+tire+'&interior='+interior+'&firstName='+firstName+'&lastName='+lastName+'&phone='+phone+'&country='+country+'&state='+state+'&zip='+zip+'&quantity_input='+quantity_input+'&email='+email+'&address='+address+'&address2='+address2+'&downp='+downp+'&downmonth='+downmonth;
 
 	$.ajax({ 
 

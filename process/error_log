@@ -1,0 +1,4 @@
+[20-Jan-2021 13:21:27 America/New_York] PHP Parse error:  syntax error, unexpected '$gh2' (T_VARIABLE) in /home/kaviuafe/public_html/process/process.php on line 102
+[20-Jan-2021 13:21:31 America/New_York] PHP Parse error:  syntax error, unexpected '$gh2' (T_VARIABLE) in /home/kaviuafe/public_html/process/process.php on line 102
+[20-Jan-2021 13:21:53 America/New_York] PHP Parse error:  syntax error, unexpected '$gh2' (T_VARIABLE) in /home/kaviuafe/public_html/process/process.php on line 102
+[20-Jan-2021 13:23:08 America/New_York] PHP Notice:  Undefined variable: downp in /home/kaviuafe/public_html/process/process.php on line 102

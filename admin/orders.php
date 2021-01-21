@@ -57,6 +57,7 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
                 <th>Order By</th>
                 <th>Product Name</th>
                 <th>Total price</th>
+				<th>Payment Type</th>
                 <th>Action</th>
                
             </tr>
@@ -70,16 +71,28 @@ table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.s
 	{
 	$uid = $row['user_id'];
 	$orid = $row['id'];
+	$status = $row['status'];
 		?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
 				 <td><?php  $resk = $db->fechusersid($uid);  $rowk = mysqli_fetch_assoc($resk)?><?php echo $rowk['name']; ?></td>
                 <td><?php echo $row['pname']; ?></td>
                 <td>$ <?php echo $row['proprice']; ?></td>
+				 <td><?php echo $row['payoption']; ?></td>
                 <td>
 				<a href="https://kavity.co/admin/order_details.php?id=<?php echo $orid; ?>"><button class="btn btn-warning btn--icon btn-status" data-id="453" data-status="1"><i class="zmdi zmdi-eye"></i></button></a>
-			
-					
+			 <?php
+if($status == 1)
+{ ?>
+<a href="javascript:void();"><button class="btn btn-warning btn-status" data-id="453" data-status="1">Order Accepted</button> </a>
+
+<?php }
+else
+{ ?> 
+	<a href="javascript:void();" onclick="accept_order(<?php echo $orid; ?>);"><button class="btn btn-success btn-status" data-id="453" data-status="1">Accept Order</button> </a>
+<?php }
+			 ?>
+		<a href="javascript:void();" onclick="reject_order(<?php echo $orid; ?>);"><button class="btn btn-danger btn-status" data-id="453" data-status="1">Reject Order</button></a>			
 				</td>
             </tr>
 	<?php } ?>

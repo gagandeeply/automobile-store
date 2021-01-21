@@ -53,6 +53,11 @@ $db= new functions();
   							 <p><?php echo $row['interior']; ?></p>
   							<i class="form-group__bar"></i>
   						</div>
+						<div class="form-group">
+							 <label> Payment Type</label>
+  							 <p><?php echo $row['payoption']; ?></p>
+  							<i class="form-group__bar"></i>
+  						</div>
 							<div class="form-group">
 							 <label> Product Order By</label>
   							 <p><?php  $resk = $db->fechusersid($uid);  $rowk = mysqli_fetch_assoc($resk)?><?php echo $rowk['name']; ?></p>
@@ -119,6 +124,25 @@ $db= new functions();
   							 <p><?php echo $row['zip']; ?></p>
   							<i class="form-group__bar"></i>
   						</div>
+  						
+  						
+  						
+  						
+  						
+  						<div class="form-group">
+							 <label> Downpayment</label>
+  							 <p><?php echo $row['downp']; ?></p>
+  							<i class="form-group__bar"></i>
+  						</div>
+  						
+  						<div class="form-group">
+							 <label> Downpayment Months</label>
+  							 <p><?php echo $row['downmonth']; ?></p>
+  							<i class="form-group__bar"></i>
+  						</div>
+							
+							
+							
 							
   					</form>
   				</div>

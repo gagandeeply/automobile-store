@@ -95,9 +95,12 @@ else if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'create_order')
 	$country= $_REQUEST['country'];
 	$state=$_REQUEST['state'];
 	$zip=$_REQUEST['zip'];
+	$payoption=$_REQUEST['payoption'];
 	$quantity_input= $_REQUEST['quantity_input'];
+	$downp=$_REQUEST['downp'];
+	$downmonth=$_REQUEST['downmonth'];
 
-     $gh2 = "INSERT INTO `order_table`(`user_id`, `pid`, `pname`, `proprice`, `color`, `tire`, `interior`, `firstName`, `lastName`, `phone`, `email`, `address`, `address2`, `country`, `state`, `zip`, `quantity_input`) VALUES ('$userid','$pid','$pname','$proprice','$color','$tire','$interior','$firstName','$lastName','$phone','$email','$address','$address2','$country','$state','$zip','$quantity_input')";
+     $gh2 = "INSERT INTO `order_table`(`user_id`, `pid`, `pname`, `proprice`, `color`, `tire`, `interior`, `firstName`, `lastName`, `phone`, `email`, `address`, `address2`, `country`, `state`, `zip`, `quantity_input`,`payoption`,`downp`,`downmonth`) VALUES ('$userid','$pid','$pname','$proprice','$color','$tire','$interior','$firstName','$lastName','$phone','$email','$address','$address2','$country','$state','$zip','$quantity_input','$payoption','$downp','$downmonth')";
 
         $result2 =  mysqli_query($conn1,$gh2);
 

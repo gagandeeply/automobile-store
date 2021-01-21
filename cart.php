@@ -615,7 +615,7 @@ ul {
                 </div>
 				  
             </div>
-       <div id=outer>EMI Calculator<div id=cover><form><table class=main><col class=w50><col class=w50><tr><td>Loan Amount<td><input id=loan1><tr><td>Repayment in months<td><input id=months1><tr><td>Interest Rate<td><input id=rate1 onchange=emi();><tr><td><button type=reset>Reset</button><td><button type=button onclick='emi()'>Submit</button><tr><td>EMI<td><input id=pay1><tr><td>Interest payable<td><input id=tintt1><tr><td>Total payable<td><input id=gt1></table></form></div></div>
+       <div id=outer>Financing EMI Calculator<div id=cover><form><table class=main><col class=w50><col class=w50><tr><td>Loan Amount<td><input id=loan1><tr><td>Repayment in months<td><input id=months1><tr><td>Interest Rate<td><input id=rate1 onchange=emi();><tr><td><button type=reset>Reset</button><td><button type=button onclick='emi()'>Submit</button><tr><td>EMI<td><input id=pay1><tr><td>Interest payable<td><input id=tintt1><tr><td>Total payable<td><input id=gt1></table></form></div></div>
   
         </div>
     </div>
@@ -688,6 +688,46 @@ ul {
                         <input type="text" class="form-control" id="zip" placeholder="Zip" required="">
                         <div class="invalid-feedback"> Zip code required. </div>
                     </div>
+					 
+					
+					 <div class="col-md-5 mb-3">
+                        <label for="zip">Payment Option</label>
+						 <br />
+                        <input type="radio"  id="payoption" name="payoption" value="Full Payment" checked > Full Payment <br />
+						
+						
+						 <input type="radio"  id="payoption"  name="payoption"  value="Finance"> Finance <br />
+						 
+                     
+                    </div>
+                    
+                    
+                    
+                    <br>
+                    
+                     <div class="mb-3">
+                        <label for="zip">Downpayment (valid only if financing.  Will be disregarded in case of full payment.)</label>
+                        <input type="text" class="form-control" id="downp" placeholder="Enter downpayment">
+                        
+                    </div>
+                    
+                    <div class="col-md-5 mb-3">
+                        <label for="zip">Financing Months</label>
+						 <br />
+                        <input type="radio"  id="downmonth" name="downmonth" value="36" checked > 36 months <br />
+						
+						
+						 <input type="radio"  id="downmonth"  name="downmonth"  value="72"> 72 months <br />
+						 
+						  <input type="radio"  id="downmonth"  name="downmonth"  value="0"> Not applicable (full payment) <br />
+						 
+                     
+                    </div>
+                    
+                    
+                    
+                    
+                    
                 </div>
                 <hr class="mb-4">
                 <button class="btn btn-primary btn-lg btn-block" type="button" onclick="createorder();">Order Now</button>

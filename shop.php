@@ -12,7 +12,7 @@ error_reporting(0);
     margin-bottom: -1px;
     background-color: hsl(3deg 100% 65%);
     border: 1px solid rgb(255 255 255);
-}
+}detai
 .card-img-top {
     width: 100%;
     height: 170px;
@@ -92,6 +92,7 @@ $uid = $_SESSION['id'];
 		$pid = $rowh['id'];
 		$reshkk = $db->fechbook($pid,$uid);
 		$rowcountkk = mysqli_num_rows($reshkk);
+	
 ?>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
@@ -112,16 +113,26 @@ $uid = $_SESSION['id'];
               <div class="card-footer">
 			    
 			  <?php if($email !='') { ?>
-			  <?php if($rowcountkk == '1') { ?>
-			  <p id="ldefdfd<?php echo $rowh['id']; ?>" style="color:green;float: left; background: green;color: #fff !important;font-size: 12px;padding: 8px;cursor: pointer;"> Already Booked</p>
+			  <?php if($rowcountkk > 1) { ?>
+			 <?php 
+			 while($rowhbb = mysqli_fetch_assoc($reshkk))
+		 $status = $rowhbb['status']; {
+			  if($status == 1)
+			  { ?>
+				<span style="color:red";> Previous Request Rejected. Apply again in 7 days.</span></br>
+				
 			  <?php } else { ?>
+			  
+			  <p id="ldefdfd<?php echo $rowh['id']; ?>" style="color:green;float: left; background: green;color: #fff !important;font-size: 12px;padding: 8px;cursor: pointer;"> Already Booked</p>
+			  
+			  <?php } } } else { ?>
 			  <small class="text-muted" data-toggle="modal" data-target="#exampleModal<?php echo $rowh['id']; ?>" style="float: left; background: hsl(3deg 100% 65%);color: #fff !important;font-size: 12px;padding: 8px;cursor: pointer;" >Test Drive</small>
 			  <?php } ?>              
-			  <a href="https://kavity.co/cart.php?id=<?php echo $rowh['id']; ?>" target="_blank"><small class="text-muted" style="float: right; background: #057dff;color: #fff !important;font-size: 12px;padding: 8px;cursor: pointer;">Detail's</small></a>
+			  <a href="https://kavity.co/cart.php?id=<?php echo $rowh['id']; ?>" target="_blank"><small class="text-muted" style="float: right; background: #057dff;color: #fff !important;font-size: 12px;padding: 8px;cursor: pointer;">Details</small></a>
               
 			  <?php } else { ?>
 			  <small class="text-muted" onclick="ldetails(<?php echo $rowh['id']; ?>);" style="float: left; background: hsl(3deg 100% 65%);color: #fff !important;font-size: 12px;padding: 8px;cursor: pointer;" >Test Drive</small>
-			  <small class="text-muted" style="float: right; background: #057dff;color: #fff !important;font-size: 12px;padding: 8px;cursor: pointer;" onclick="ldetails(<?php echo $rowh['id']; ?>);"  >Detail's</small>
+			  <small class="text-muted" style="float: right; background: #057dff;color: #fff !important;font-size: 12px;padding: 8px;cursor: pointer;" onclick="ldetails(<?php echo $rowh['id']; ?>);"  >Details</small>
 			  </br></br></br><p id="lde<?php echo $rowh['id']; ?>" style="color:red;text-align:center;"></p>  
 			  <?php } ?> 
 			  </div>
@@ -131,7 +142,7 @@ $uid = $_SESSION['id'];
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Test Drive Detail's</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Test Drive Details</h5>
      <p id="errorsu<?php echo $rowh['id']; ?>" style="color:green;"></p>  
 	   <p id="error<?php echo $rowh['id']; ?>" style="color:red;"></p>
       </div>
